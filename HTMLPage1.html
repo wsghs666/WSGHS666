@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>表单</title>
+    <style>
+        td {
+            font-size: 60px;
+            color: blue;
+            font-family:"楷体"；
+        }
+        div {
+            font-size: 80px;
+            color: blue;
+            font-family: "楷体"；
+        }
+        a {
+            font-size: 60px;
+            color: blue;
+            font-family: "楷体"；
+        }
+    </style>
+</head>
+<body>
+    <div style="color:blue;font-weight:600;font-family:楷体">请点下面</div>
+    <a target="_blank" title="123" href="https://www.keil.com/demo/eval/arm.htm">点我</a>
+
+    <script>
+function add(num1, num2) {
+            num1=num1.toString();
+            num2=num2.toString();
+            var index1 = num1.indexOf(".");
+            var index2 = num2.indexOf(".");
+            var ws1 = 0;
+                var ws2 = 0;
+            if (index1 != -1) {
+                ws1 = num1.split(".")[1].length;
+            }
+            if (index2 != -1) {
+                ws2 = num2.split(".")[1].length;
+            }
+            var biggerweishu1 = Math.max(ws1, ws2);
+            var smallerweishu1 = Math.min(ws1, ws2);
+            var bigger2 = Math.min(num1, num2);
+            var smaller2 = Math.max(num1, num2);
+            var zerocounter = biggerweishu1 - smallerweishu1;
+            num1 = num1.replace(".", "");
+            num2 = num2.replace(".", "");
+            if(ws1>ws2){
+                for (var i = 0; i < zerocounter; i++) {
+                    num2 += "0";
+                }
+            }else if(ws1<ws2){
+                for (var i = 0; i < zerocounter; i++) {
+                    num1 += "0";
+                }
+            }
+
+            var beishu = 1;
+            for (var i = 0; i < biggerweishu1; i++) {
+                beishu *= 10;
+            }
+            var sum = parseInt(num1) + parseInt(num2);
+            sum=sum/beishu;
+            return sum;
+}
+    alert("这是keil安装路线")；
+
+    </script>
+
+    <form action=" login.php" method='get'>
+        <table border="1",cellpadding="10">
+            <tr>
+                <td>请输入用户名：</td>
+                <td><input type="text" name="username" placeholder="用户名" /></td>
+            </tr>
+            <tr>
+                <td>请输入密码：</td>
+                <td><input type="password" name="password" placeholder="密码" /></td>
+            </tr>
+            <tr>
+                <td>请选择性取向（保密）：</td>
+                <td>
+                    <lable><input type="radio" name="gender" value="male" /> 男</lable>
+                    <lable><input type="radio" name="gender" value="female" /> 女</lable>
+                    <lable><input type="radio" name="gender" value="female" /> 未知</lable>
+                </td>
+            </tr>
+            <tr align="right">
+                <td colspan="2">
+                    <input type="submit" value="提交" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
